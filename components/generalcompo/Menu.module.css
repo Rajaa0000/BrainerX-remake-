@@ -1,0 +1,73 @@
+.icon{
+    height: 2rem;
+    color:#252c4b;
+    
+}
+.iconn{
+    
+    height: 2rem;
+    color:#252c4b;
+}
+.menuList{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+   background-color: white;
+    padding: 50px  25px 0 25px;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 70%;
+   
+}
+.menuList ul{
+    
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    gap:1.2rem;
+    margin-bottom: 2rem;
+}
+.link{
+    text-decoration: none;
+    font-size: 17px;
+    cursor: pointer;
+    list-style: none;
+     margin: 0;
+ line-height: 1.2;
+  color:var(--thm-black);
+  font-weight: 500;
+}
+.infoDiv{
+ margin-bottom: 1.5rem;
+ font-size: 14px;
+  font-weight: 500;
+  color: var(--bs-gray);
+  margin: 0;
+}
+.contact{
+    padding: 0;
+    margin: 0;
+     color:var(--thm-black);
+     font-size: 14px;
+  font-weight: 500;
+}
+
+.button{
+    margin-block:2rem ;
+    padding: 4px 14px;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 2px solid #252c4b; 
+}
+.informationDiv{
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem
+}

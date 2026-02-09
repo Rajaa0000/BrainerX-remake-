@@ -1,0 +1,67 @@
+
+.sectionName{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap:1rem;
+}
+.sectionName h1{
+ margin: 0;
+ line-height: 1.2;
+  font-size: 34px;
+  color:white;
+}
+.sectionName p{
+ font-size: 20px;
+  font-weight: 500;
+  color: var(--bs-gray);
+  margin: 0;
+}
+.downloadSection{
+    margin-top: 5rem;
+    background-image: url("/images/backgrounds/downlad.png");/* background image */
+    background-color: var(--thm-black); /* overlay */
+    background-size:cover; 
+   background-position:center;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 5rem  1rem;
+
+}
+.downloadbutton{
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: var(--thm-black);
+    text-decoration: none;
+    border: 2px solid var(--bs-link-color);
+    padding: 0.5rem 2rem;
+
+}
+.span{
+    display:block;
+    color: white;
+}
+.p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    
+}
+.p p{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+.sign{
+    color:var(--yellow) ;
+    border: none;
+    text-decoration: none;
+    font-size: 2rem;
+    margin: 0;
+
+}

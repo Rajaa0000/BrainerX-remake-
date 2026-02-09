@@ -1,0 +1,98 @@
+
+.section h3{
+    margin: 0;
+    color: var(--bs-gray-600);
+    font-size: 24px;
+    font-weight: 500;
+    
+}
+.section ul{
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+   color: var(--bs-gray-600);
+    font-size: 18px;
+}
+.section ul li{
+    list-style: none;
+}
+.sectionInfo{
+    display: flex;
+    flex-direction: column;
+    gap:27px;
+}
+
+.floatingPhone{
+  width: 60%;
+  height: auto;
+  margin-bottom: 2rem;
+  animation:floating 4s linear infinite alternate;
+}
+.sectionName{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap:0.2rem;
+}
+.sectionName h1{
+ margin: 0;
+  line-height: 1.2;
+  font-size: 45px;
+  color:var(--thm-black);
+}
+.sectionName p{
+    font-size: 18px;
+  font-weight: 500;
+  color: var(--bs-gray);
+  margin: 0;
+}
+.liElement{
+    display: flex;
+    align-items: center;
+    gap:20px;
+    margin: 0;
+
+}
+.liElement div{
+
+  border-radius: 50%;
+  border: none;
+  background-color: var(--dark-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+
+}
+.icon{
+ color:white;
+ width: 18px;
+ transform: scale(0.7);
+ height: auto;
+
+ 
+
+}
+   
+.button{
+    padding: 4px 14px;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 2px solid #252c4b; 
+}
+ @keyframes floating{
+ 0%{
+    transform: translateY(0);
+
+ }
+ 50%{
+     transform: translateY(20px);
+ }
+ 100%{
+
+  transform: translateY(0);}
+}

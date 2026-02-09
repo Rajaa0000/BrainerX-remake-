@@ -1,0 +1,36 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    position: relative;
+}
+
+.sectionName{
+    text-align: center;
+    padding-bottom: 3rem;
+
+}
+.sectionName h1{
+ margin: 0;
+  line-height: 1.2;
+  font-size: 45px;
+  color:var(--thm-black);
+}
+.sectionName p{
+    font-size: 18px;
+  font-weight: 500;
+  color: var(--bs-gray);
+  margin: 0;
+}
+@media(min-width:900px) {
+  .sectionName{
+    position: absolute;
+    background-color: white;
+    right:2rem;
+    top:-4rem;
+    width: 30rem;
+    z-index: 10;
+    box-shadow: 2px 2px 0px 5px var(--bs-gray-100);
+    padding: 2rem;
+  }
+}

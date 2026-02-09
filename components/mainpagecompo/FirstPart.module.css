@@ -1,0 +1,36 @@
+.floatingPhone{
+    animation:floating 3s linear infinite alternate;
+    height: auto;
+    width: 307.88px;
+
+    
+}
+@keyframes floating {
+  0%{
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
+  }
+}
+.firstsectiontext{
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap:10px;
+    margin-top: 2rem;
+}
+.firstsectiontext h1{
+    
+  line-height: 1.2;
+  font-size: 45px;
+  color:var(--thm-black)
+}
+.firstsectiontext p{
+    font-size: 18px;
+  font-weight: 500;
+  color: var(--bs-gray);
+}
+
+

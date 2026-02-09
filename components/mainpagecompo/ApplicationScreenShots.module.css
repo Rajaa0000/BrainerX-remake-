@@ -1,0 +1,32 @@
+.app{
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+}
+.sectionName{
+    text-align: center;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+.sectionName h1{
+ margin: 0;
+ line-height: 1.2;
+  font-size: 45px;
+  color:var(--thm-black);
+}
+.sectionName p{
+ font-size: 18px;
+  font-weight: 500;
+  color: var(--bs-gray);
+  margin: 0;
+}
+.screenshots{
+    gap:1rem;
+    display: flex;
+    overflow: scroll;
+}
+.image{
+  height: auto;
+  width: 50%;
+}
