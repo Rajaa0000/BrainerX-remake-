@@ -1017,16 +1017,31 @@ courses.push({
     }
   ]
 });
+ 
 export async function GET(req: Request) {
-  // Create a URL object from the request
   const url = new URL(req.url);
+  const topic = url.searchParams.get("topic");
+  const idParam = url.searchParams.get("id");
 
-  // Access query parameters using searchParams
-  const topic = url.searchParams.get("topic"); // e.g., ?topic=AI
-  const topicData=courses.filter((item)=>item.topic==topic);
-  if (topicData) return NextResponse.json(topicData);
+  if (!topic || idParam === null) {
+    return NextResponse.json({ error: "Missing topic or id" }, { status: 400 });
+  }
 
-  
+  // Find the topic object
+  const topicObj = courses.find(t => t.topic === topic);
+
+  if (!topicObj) {
+    return NextResponse.json({ error: `No courses found for topic: ${topic}` }, { status: 404 });
+  }
+
+  // Find the course inside the topic's courses array
+  const course = topicObj.courses.find(c => c.id === Number(idParam));
+
+  if (!course) {
+    return NextResponse.json({ error: `Course with id ${idParam} not found in topic ${topic}` }, { status: 404 });
+  }
+
+  return NextResponse.json(course);
 }
 
 

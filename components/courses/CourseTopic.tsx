@@ -8,35 +8,34 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "./CourseTopic.module.css";
 
-// 1. Define the Course interface (reuse from before or define here)
-interface CourseSummary {
-  id: string | number;
+// Define types
+type CourseItem = {
+  id: string;
   name: string;
   goal: string;
   organizer: string;
-  reviews: string[];
-}
+  reviews?: string[]; // optional array of strings
+};
 
-interface TopicData {
+type TopicCourses = {
   topic: string;
-  courses: CourseSummary[];
-}
+  courses: CourseItem[];
+};
 
 function CourseTopic() {
   const searchParams = useSearchParams();
-  const topic = searchParams.get("topic");
+  const topic = searchParams.get("topic")|| "";;
 
-  // 2. Add types to State
-  const [topicCourses, setTopicCourses] = useState<TopicData[] | null>(null);
-  const [selectedCourse, setSelectedCourse] = useState<{ topic: string; id: string | number } | null>(null);
+  const [topicCourses, setTopicCourses] = useState<TopicCourses[] | null>(null);
+  
 
   // === Fetch courses ===
   useEffect(() => {
     if (!topic) return;
     async function fetchTopicCourses() {
       try {
-        const res = await fetch(`/api/courseTopic?topic=${topic}`);
-        const data: TopicData[] = await res.json();
+        const res = await fetch(`/api/courseTopic?topic=${encodeURIComponent(topic)}`);
+        const data: TopicCourses[] = await res.json();
         setTopicCourses(data);
       } catch (error) {
         console.error("Error fetching topic courses:", error);
@@ -45,40 +44,14 @@ function CourseTopic() {
     fetchTopicCourses();
   }, [topic]);
 
-  // === Handle review increment ===
-  useEffect(() => {
-    // 3. Fix the "Possibly Null" error by capturing the value in a constant
-    if (!selectedCourse) return;
-    
-    const currentCourse = selectedCourse; // This locks the type as non-null for the closure
 
-    async function updateReviews() {
-      try {
-        const res = await fetch("/api/courseTopic", {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            topic: currentCourse.topic,
-            id: currentCourse.id,
-          }),
-        });
-        const data = await res.json();
-        if (!data.success) throw new Error("Failed to update reviews");
-        console.log("Review updated:", data.vi);
-      } catch (error) {
-        console.error("Error updating reviews:", error);
-      }
-    }
-    updateReviews();
-  }, [selectedCourse]);
 
   // === Render courses ===
-  // 4. Type the 'item' in map and use optional chaining
-  const oneTopicCourses = topicCourses?.[0]?.courses?.map((item: CourseSummary) => (
+  const oneTopicCourses = topicCourses?.[0]?.courses?.map((item: CourseItem) => (
     <article key={item.id} className={styles.oneDiv}>
       <Link
         href={`/courses/${item.id}?topic=${topicCourses[0].topic}`}
-        onClick={() => setSelectedCourse({ topic: topicCourses[0].topic, id: item.id })}
+        
         className="block"
       >
         <div className="text-[#213e69] font-[500]">

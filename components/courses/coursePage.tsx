@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { faStar, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 
 // 1. Define the internal structures
 interface CourseDescription {
@@ -45,30 +45,25 @@ function CoursePage() {
   const [data, setData] = useState<Course | null>(null);
   const [form, setForm] = useState<boolean>(false);
 
-  const params = useParams();
+  const id = Number(useParams().id);
+  const topic=useSearchParams().get("topic");
+
   
-  // Next.js params can be string | string[]. We ensure it's handled.
-  const topic = params.topic as string; 
-  const idParam = params.id as string;
 
   useEffect(() => {
     async function fill() {
       try {
-        const id = Number(idParam);
-        const res = await fetch(`/api/courseTopic?topic=${topic}`);
+        
+        const res = await fetch(`/api/course?id=${id}&topic=${topic}`);
         const apiData = await res.json();
         
-        // 4. Properly type the filter parameter 'item'
-        if (apiData && apiData[0] && apiData[0].courses) {
-          const foundCourse = (apiData[0].courses as Course[]).find((item: Course) => item.id === id);
-          setData(foundCourse || null);
-        }
+        setData(apiData);
       } catch (error) {
         console.error("Failed to fetch course:", error);
       }
     }
     fill();
-  }, [topic, idParam]);
+  }, []);
 
   let listOfReviews: React.ReactNode[] = [];
   if (data) {
@@ -246,7 +241,9 @@ function CoursePage() {
 
 
             </form>
-            {formSent && <div className="text-red-500 mt-4">you have subscribed successfuly , we will contact you later to confirm the process.</div>}
+            {formSent && <div className="w-full h-full top-0 right-0 justify-center flex items-center absolute text-[1.5rem] text-green-500 z-100  font-500 bg-gray/50 backdrop-blur-sm
+            ">
+              you have subscribed successfuly , we will contact you later to confirm the process.</div>}
           </div>
         </div>
       }
