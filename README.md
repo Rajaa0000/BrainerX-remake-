@@ -1,4 +1,5 @@
-# BrainX 🎓
+# BrainX 🎓  
+the link for the deployed version of this website  : https://brainer-x-remake-git-main-rajaas-projects-04901519.vercel.app/
 
 BrainX is a frontend web application built as a **enhancement of the official website of brainerX**.  
 The platform presents educational courses, allows users to explore course details, and subscribe through a dynamic form-based workflow.
